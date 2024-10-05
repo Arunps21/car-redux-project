@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './Car.css'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCar } from "./actions/getCar";
 function Car() {
-  const [car, setCar] = useState([]);
 
   const dispatch = useDispatch()
   
   useEffect(() => {
     dispatch(getCar)
   }, []);
+
+  const car = useSelector(state=>state.reducerCar)
+  console.log(car);
+  
   return (
     <>
       <h1 className="mt-3" style={{ textAlign: "center" }}>
